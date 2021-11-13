@@ -14,6 +14,13 @@ async function startApolloServer(typeDefs, resolvers) {
     },
   });
 
+  server.applyMiddleware({ 
+    cors: {
+      origin: "studio.apollographql.com",
+      credentials: true 
+    } 
+  });
+
   const { url, port } = await server.listen({ port: process.env.PORT || 4000 });
   console.log(`
       🚀  Server is running
